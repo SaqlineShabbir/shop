@@ -6,6 +6,9 @@ import ErrorPage from "../pages/ErrorPage";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AddProduct from "../pages/dashboard/AddProduct";
+import ManageProducts from "../pages/dashboard/ManageProducts";
+import Profile from "../pages/dashboard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +42,18 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/dashboard/add-product",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/dashboard/manage-products",
+        element: <ManageProducts></ManageProducts>,
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>,
       },
     ],
   },

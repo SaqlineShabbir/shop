@@ -184,7 +184,7 @@ export default function Navigation() {
                 <div className="">
                   {" "}
                   <p className="font-bold text-xl py-2 border-white border-2 rounded-full px-4">
-                    {/* {user?.displayName.slice(0, 1)} */}
+                    {user?.name?.slice(0, 1)}
                   </p>
                 </div>
               )}

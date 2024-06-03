@@ -34,10 +34,13 @@ const Login = () => {
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log(data?.token);
       if (data?.status === "success") {
         await signIn(email, password);
         toast.success("Login successful!");
+        // Store token in localStorage
+        localStorage.setItem("token", data.token);
+        navigate(from, { replace: true });
       } else {
         throw new Error("User not found");
       }
