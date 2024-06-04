@@ -87,7 +87,7 @@ const Login = () => {
         }
 
         const result = await response.json();
-        console.log("reeeee", result);
+
         localStorage.setItem("token", result?.token);
       }
     } catch (error) {

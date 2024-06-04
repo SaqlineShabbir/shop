@@ -38,6 +38,7 @@ export default function Navigation() {
   //  logout functionality here
   const logOut = async () => {
     await signout();
+    localStorage.removeItem("token");
   };
 
   return (

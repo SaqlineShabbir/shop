@@ -40,7 +40,10 @@ const Register = () => {
             body: JSON.stringify(userInfo),
           })
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => {
+              navigate("/login");
+              console.log(data);
+            });
         }
       });
       if (user) {
