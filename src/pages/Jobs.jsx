@@ -11,15 +11,12 @@ const Jobs = () => {
         </div>
         <div className="space-y-3 lg:w-[50%]">
           <p>Now Hiring</p>
-          <p className="text-3xl font-bold">
-            Cooks, Servers,Bussers,and Dishwashers
-          </p>
+          <p className="text-3xl font-bold">Join Our E-Commerce Team</p>
           <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-            doloremque maiores ipsa quia vero hic officiis corrupti facilis
-            voluptate, nemo laboriosam ullam, labore fugit <br />
-            cupiditate modi consequatur in maxime quasi voluptatibus ad
-            temporibus doloribus. Ipsam, <br />
+            We are seeking passionate individuals to become a part of our
+            e-commerce family. If you have a love for retail and a commitment to
+            providing exceptional customer experiences, apply today and help us
+            bring the best products to our valued customers. <br />
             dolores. Veritatis quis voluptates iure in delectus at totam
             deleniti facere, tempore cumque. Sunt, laborum?
           </p>

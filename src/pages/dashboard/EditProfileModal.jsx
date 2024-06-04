@@ -84,8 +84,10 @@ const EditProfileModal = ({ setOpenModal, userData, fetchUser, token }) => {
         <hr />
 
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="mb-4">
-            <label htmlFor="name">Name</label>
+          <div className="mb-4  text-left">
+            <label className="" htmlFor="name">
+              Name
+            </label>
             <input
               defaultValue={userData?.name}
               type="text"
@@ -93,7 +95,7 @@ const EditProfileModal = ({ setOpenModal, userData, fetchUser, token }) => {
               className="w-full py-3 px-5 border text-gray-700"
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 text-left">
             <label htmlFor="price">Photo</label>
             <input
               type="text"
@@ -102,10 +104,10 @@ const EditProfileModal = ({ setOpenModal, userData, fetchUser, token }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div className="mb-4  ">
             <input
               type="submit"
-              value="Edit Profile"
+              value="Submit"
               className="w-full btn py-3 px-5 border btn-neutral text-gray-700"
             />
           </div>

@@ -4,8 +4,10 @@ import useAuth from "../hooks/useAuth";
 const Shop = () => {
   const { token } = useAuth();
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -30,6 +32,7 @@ const Shop = () => {
 
         const data = await response.json();
         setProducts(data?.data); // Adjust based on actual response structure
+        setFilteredProducts(data?.data); // Initialize filtered products
       } catch (err) {
         setError(err.message);
       } finally {
@@ -39,6 +42,13 @@ const Shop = () => {
 
     fetchProducts();
   }, [token]);
+
+  useEffect(() => {
+    const results = products.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(results);
+  }, [searchTerm, products]);
 
   if (!token) {
     return <div className="flex justify-center items-center h-screen">...</div>;
@@ -60,42 +70,44 @@ const Shop = () => {
     );
   }
 
-  if (products.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        No products available
-      </div>
-    );
-  }
-
   return (
     <div className="lg:px-[150px]">
-      <div className="flex justify-center items-center flex-col text-center py-20">
-        <h2 className="text-4xl font-bold">Our Avabilable Products</h2>
-        <p className="text-xl  pt-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-          officiis laudantium harum, ad velit fugiat distinctio minus ipsa,
-          eveniet eligendi ea. Tempore error tenetur ipsa officia iure commodi
-          dolore inventore!
-        </p>
+      <div className=" text-center py-20">
+        <h2 className="text-4xl font-bold">Our Available Products</h2>
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="mt-4 p-2 px-20 border border-orange-300 rounded"
+        />
       </div>
-      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[100vh]">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 h-[300px]"
-          >
-            <img
-              className="w-full h-48 object-cover"
-              src={product?.photo}
-              alt={product?.name}
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold">{product?.name}</h2>
-              <p className="text-gray-600">${product?.price}</p>
-            </div>
+      <div className="p-4 min-h-[100vh]">
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition duration-300 h-[300px]"
+              >
+                <img
+                  className="w-full h-48 object-cover"
+                  src={product?.photo}
+                  alt={product?.name}
+                />
+                <div className="p-4">
+                  <h2 className="text-lg font-semibold">{product?.name}</h2>
+                  <p className="text-gray-600">${product?.price}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div className="flex justify-center items-center h-[70vh]">
+            No products found
+          </div>
+        )}
       </div>
     </div>
   );

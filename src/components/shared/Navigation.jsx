@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
-// import img from "../../assets/photo/logo-removebg.png";
+import img from "../../assets/logo-removebg.png";
 import useAuth from "../../hooks/useAuth";
 export default function Navigation() {
   const [dropdown, setDropdown] = useState(false);
@@ -50,8 +50,7 @@ export default function Navigation() {
           <div className="flex items-center justify-between   md:block ">
             <Link to="/">
               <div className="flex cursor-pointer ">
-                <p>shop</p>
-                {/* <img className="w-[150px]" src={img} alt="" /> */}
+                <img className="w-[150px]" src={img} alt="" />
               </div>
             </Link>
             <div className="md:hidden">

@@ -1,20 +1,32 @@
+import React from "react";
+import beautyQueen from "../../assets/photo-camer.png";
+
 const Banner = () => {
   return (
-    <div className="  min-h-[80vh] bg-gradient-to-b  py-10 flex justify-center items-center overflow-hidden">
-      <img
-        className=" "
-        src="https://via.placeholder.com/800x400"
-        alt="Summer Sale"
-      />
-      <div className=" bg-black opacity-40 z-10"></div>
-      <div className="relative z-20 text-center ">
-        <h2 className="text-4xl font-bold mb-2">Summer Sale!</h2>
-        <p className="text-lg mb-4">Get your summer essentials now!</p>
-        <button className="bg-orange-500 text-white text-lg py-2 px-6 rounded-lg hover:bg-orange-600 transition duration-300">
-          Shop Now
-        </button>
+    <main className="h-[90vh]  bg-slate-100  border-b-2 ">
+      <div className="md:flex px-2 justify-around py-[120px]  items-center  space-y-2">
+        <div className="space-y-4">
+          <h1 className="text-3xl md:text-6xl font-bold md:leading-tight">
+            We Sell <br />
+            Your <span className="text-orange-600">DREAM</span>
+          </h1>
+
+          <p className="text-medium text-slate-500">
+            Unleash your beauty at our salon. Tailored treatments, <br /> expert
+            care—because every woman deserves to feel stunning. <br /> Elevate
+            your confidence and embrace the allure. <br /> Beauty redefined,
+            just for you.
+          </p>
+          <br />
+
+          {/* <Pinkbtn label="Get on Appoinment" /> */}
+        </div>
+
+        <div className="md:w-[450px]">
+          <img src={beautyQueen} alt="Banner image" className="rounded" />
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

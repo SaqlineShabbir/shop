@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CiEdit } from "react-icons/ci";
 import useAuth from "../../hooks/useAuth";
 import EditProfileModal from "./EditProfileModal";
 
@@ -8,7 +9,6 @@ const Profile = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const fetchUser = async () => {
-    // Check if user is available
     if (user) {
       try {
         const response = await fetch(
@@ -24,21 +24,24 @@ const Profile = () => {
       }
     }
   };
+
   useEffect(() => {
     fetchUser();
   }, [user]);
 
-  // Wait until user data is available
   if (!userData) {
     return <div className="min-h-[100vh] text-center">Loading...</div>;
   }
 
   return (
-    <div className=" min-h-[80vh] py-8 bg-white shadow-lg text-center">
+    <div className="min-h-[80vh] py-8 bg-white shadow-lg text-center">
       <header className="mb-8">
         <div className="mb-4">
           <img
-            src={userData?.photo || "https://via.placeholder.com/150"}
+            src={
+              userData?.photo ||
+              "https://cdn-icons-png.freepik.com/512/10542/10542498.png"
+            }
             alt="Profile"
             className="w-24 h-24 rounded-full object-cover mx-auto"
           />
@@ -49,16 +52,20 @@ const Profile = () => {
       <main>
         <section className="text-lg">
           <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-2">User Details</h2>
+            <div className="flex justify-center items-center gap-4 mb-4">
+              <h2 className="text-xl font-semibold">User Details</h2>
+              <CiEdit
+                size={32}
+                className="cursor-pointer"
+                onClick={() => setOpenModal(true)}
+              />
+            </div>
             <p>
               <span className="font-semibold">Name:</span> {userData?.name}
             </p>
             <p>
               <span className="font-semibold">Email:</span> {userData?.email}
             </p>
-            <button onClick={() => setOpenModal(true)} className="bg-blue-300">
-              Edit profile
-            </button>
           </div>
         </section>
       </main>

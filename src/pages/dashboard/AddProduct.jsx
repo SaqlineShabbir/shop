@@ -9,11 +9,11 @@ const AddProduct = () => {
   const categories = [
     {
       id: 1,
-      name: "Apple",
+      name: "Electronic",
     },
     {
       id: 2,
-      name: "Mango",
+      name: "Dressing",
     },
   ];
 
@@ -94,7 +94,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="w-full px-16 py-20">
+    <div className="w-full px-16 lg:px-[300px] py-20">
       <Toaster />
       <h1 className="text-4xl mb-4 text-center">Add Product</h1>
       <form onSubmit={handleCreateProduct} className="w-full">

@@ -27,7 +27,7 @@ const testimonialsData = [
 
 const Testimonials = () => {
   return (
-    <section className="py-12 bg-gray-100 min-h-[70vh]">
+    <section className="py-20 bg-gray-100 min-h-[80vh] lg:px-20">
       <div className="container mx-auto px-4">
         <h2 className="text-center text-3xl font-bold mb-8">
           Customer Testimonials
