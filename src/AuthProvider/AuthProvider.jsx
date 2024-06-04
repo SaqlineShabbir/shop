@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
   const getUserInfo = async (email) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/v1/user/${email}`
+        `https://inventory-backend-ooh5.onrender.com/api/v1/user/${email}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch user information");

@@ -62,7 +62,7 @@ const Login = () => {
         };
 
         const response = await fetch(
-          "http://localhost:5000/api/v1/user/google",
+          "https://inventory-backend-ooh5.onrender.com/api/v1/user/google",
           {
             method: "POST",
             headers: {

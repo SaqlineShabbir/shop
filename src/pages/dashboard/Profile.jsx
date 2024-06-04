@@ -12,7 +12,7 @@ const Profile = () => {
     if (user) {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/v1/user/${user.email}`
+          `https://inventory-backend-ooh5.onrender.com/api/v1/user/${user.email}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch user data");

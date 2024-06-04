@@ -25,7 +25,7 @@ const EditProfileModal = ({ setOpenModal, userData, fetchUser, token }) => {
 
               try {
                 const response = await fetch(
-                  `http://localhost:5000/api/v1/user/${userData?._id}`,
+                  `https://inventory-backend-ooh5.onrender.com/api/v1/user/${userData?._id}`,
                   {
                     method: "PATCH",
                     headers: {
