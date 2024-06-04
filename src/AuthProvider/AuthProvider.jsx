@@ -63,7 +63,7 @@ const AuthProvider = ({ children }) => {
     if (storedToken) {
       setToken(storedToken);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     const unscubcribe = onAuthStateChanged(auth, (currentUser) => {
