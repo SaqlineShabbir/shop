@@ -9,7 +9,6 @@ export default function Navigation() {
   const [navbar, setNavbar] = useState(false);
 
   const { logout: signout, user } = useAuth();
-  console.log(user);
 
   //dropdown
   const dropdownRef = useRef(null);

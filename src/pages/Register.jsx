@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import GoogleLogin from "../components/Login-Registration/GoogleLogin";
+import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 
 const Register = () => {
   const [passMatch, setPassMatch] = useState(true);
-  const { createUser, user } = useAuth();
+  const { createUser, user, googleLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -49,6 +50,53 @@ const Register = () => {
       if (user) {
         navigate(from);
       }
+    }
+  };
+  //google  login
+  //google
+  const handleGoogleSignIn = async () => {
+    try {
+      const data = await googleLogin();
+      console.log("googlee", data.user);
+      if (data?.user?.email) {
+        const userInfo = {
+          email: data.user.email,
+          name: data.user.displayName,
+        };
+
+        const response = await fetch(
+          "https://inventory-backend-ooh5.onrender.com/api/v1/user/google",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+          }
+        );
+
+        console.log("Fetch Response:", response);
+
+        if (!response.ok) {
+          // Log response status and message
+          const errorText = await response.text();
+          console.error(
+            "Fetch Error:",
+            response.status,
+            response.statusText,
+            errorText
+          );
+          throw new Error("Failed to login");
+        }
+
+        const result = await response.json();
+
+        localStorage.setItem("token", result?.token);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error during Google sign-in:", error.message);
+      // Optionally, you can display an error message to the user
     }
   };
 
@@ -108,7 +156,17 @@ const Register = () => {
           <button className="bg-indigo-500 text-white w-full py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
             Register
           </button>
-          {/* <GoogleLogin /> */}
+          <div className="mt-6 ">
+            <button
+              onClick={handleGoogleSignIn}
+              className=" w-full  bg-orange-400 rounded"
+            >
+              <div className="flex items-center gap-2   text-center  justify-center py-2 ">
+                <FcGoogle size={24} />
+                <p>Google</p>
+              </div>
+            </button>
+          </div>
           <p className="mt-4 text-center">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-500">
