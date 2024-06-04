@@ -1,29 +1,30 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import EditProfileModal from "./EditProfileModal";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const [userData, setUserData] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      // Check if user is available
-      if (user) {
-        try {
-          const response = await fetch(
-            `http://localhost:5000/api/v1/user/${user.email}`
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch user data");
-          }
-          const userData = await response.json();
-          setUserData(userData?.data);
-        } catch (error) {
-          console.error(error);
+  const fetchUser = async () => {
+    // Check if user is available
+    if (user) {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/v1/user/${user.email}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
         }
+        const userData = await response.json();
+        setUserData(userData?.data);
+      } catch (error) {
+        console.error(error);
       }
-    };
-
+    }
+  };
+  useEffect(() => {
     fetchUser();
   }, [user]);
 
@@ -55,9 +56,20 @@ const Profile = () => {
             <p>
               <span className="font-semibold">Email:</span> {userData?.email}
             </p>
+            <button onClick={() => setOpenModal(true)} className="bg-blue-300">
+              Edit profile
+            </button>
           </div>
         </section>
       </main>
+      {openModal && (
+        <EditProfileModal
+          setOpenModal={setOpenModal}
+          userData={userData}
+          fetchUser={fetchUser}
+          token={token}
+        />
+      )}
     </div>
   );
 };

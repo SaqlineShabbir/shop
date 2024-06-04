@@ -106,11 +106,11 @@ export default function Navigation() {
                 </Link>
               </li>
 
-              {/* <li className=" hover:text-black-600 cursor-pointer">
-                <Link to="/about-us">
-                  <p>About us</p>
+              <li className=" hover:text-black-600 cursor-pointer">
+                <Link to="/shop">
+                  <p>Shop</p>
                 </Link>
-              </li> */}
+              </li>
 
               {/* <li className=" hover:text-black-600 cursor-pointer">
                 <Link to="/menu">
@@ -154,6 +154,11 @@ export default function Navigation() {
                   )}
                 </li>
               )}
+              <li className=" hover:text-black-600 cursor-pointer">
+                <Link to="/jobs">
+                  <p>Jobs</p>
+                </Link>
+              </li>
               {!user && (
                 <li className=" hover:text-black-600 cursor-pointer">
                   <Link to="/signup">

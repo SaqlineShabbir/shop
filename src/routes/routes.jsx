@@ -4,8 +4,10 @@ import Home from "../pages/Home";
 
 import ErrorPage from "../pages/ErrorPage";
 
+import Jobs from "../pages/Jobs";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Shop from "../pages/Shop";
 import AddProduct from "../pages/dashboard/AddProduct";
 import ManageProducts from "../pages/dashboard/ManageProducts";
 import Profile from "../pages/dashboard/Profile";
@@ -36,12 +38,20 @@ export const router = createBrowserRouter([
       //   },
 
       {
-        path: "/register",
+        path: "/signup",
         element: <Register />,
       },
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/jobs",
+        element: <Jobs />,
       },
       {
         path: "/dashboard/add-product",
