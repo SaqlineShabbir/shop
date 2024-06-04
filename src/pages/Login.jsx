@@ -156,7 +156,7 @@ const Login = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <p className="mt-4 text-center">
             New here?{" "}
-            <Link to="/register" className="text-blue-500">
+            <Link to="/signup" className="text-blue-500">
               Register
             </Link>
           </p>

@@ -153,7 +153,7 @@ const Register = () => {
           {!passMatch && (
             <p className="text-red-500">Passwords do not match!</p>
           )}
-          <button className="bg-indigo-500 text-white w-full py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
+          <button className="bg-orange-400 text-white w-full py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">
             Register
           </button>
           <div className="mt-6 ">
